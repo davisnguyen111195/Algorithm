@@ -32,15 +32,34 @@ using namespace std;
 using ll = long long;
 
 bool checkSphenic(ll n){
+    int count = 0;
 
-    for(ll i = 2; i <= n; i++) {
-        while(n % i == 0) {
-            
+    for(ll i = 2; i <= sqrt(n); i++) {
+        if(n % i == 0){
+            count++;
+            n = n / i;
+            //neu sau khi chia cho i, neu n tiep tuc chia het cho i thi tra ve false luon vi so 
+            //so sphenic la tich cua 3 so co bac bang 1.
+            if(n % i == 0) {
+                return false;
+            }
         }
+    }
+    //neu n > 1 tuc la van con so nguyen to cuoi cung.
+    if(n > 1) {
+        count++;
+    }
+
+    if(count == 3){
+        return true;
+    } else {
+        return false;
     }
 }
 
 
 int main(){
+    ll n; cin >> n;
+    cout << checkSphenic(n);
     return 0;
 }
