@@ -44,12 +44,14 @@ bool primeChecker(int n){
     }
     return true;
 }
+
+
 int main(){
     int n; cin >> n;
     int counter = 0;
     for(int i = 1; i <= n; i++){
-        if(primeChecker(i)){
-            if(maxEndChecker(i)){
+        if(maxEndChecker(i)){
+            if(primeChecker(i)){
                 cout << i << " ";
                 counter++;
             } 
