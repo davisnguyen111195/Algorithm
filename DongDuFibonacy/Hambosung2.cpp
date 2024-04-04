@@ -27,8 +27,8 @@ int main() {
     ptsnt(n);
     int maxI = -1;
     for(int i = 2; i <= 10; i++){
-        maxI = max(maxI, i);
+        maxI = max(maxI, d[i]);
     }
-    if()
+    cout << maxI;
     return 0;
 }
