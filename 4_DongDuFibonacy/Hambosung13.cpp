@@ -39,11 +39,12 @@ int main() {
     ll n; cin >> n;
     fiboGenerator();
     for(int i = 0; i <= 92; i++){
-        if(f[i] > n){
+        if(f[i] >= n){
             cout << f[i];
             return 0;
         }
     }
+
     return 0;
 
 }
