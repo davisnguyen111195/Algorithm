@@ -48,13 +48,29 @@
 #include <iostream>
 #include <cmath>
 
-using namespace std;
+#define ll long long
 
-int toHopC(int k, int n){
-    
+using namespace std;
+ll gt(int n){
+    ll s = 1;
+    for(int i = 1; i <= n; i++){
+        s *= i;
+    }
+    return s;
+}
+//tinh to hop chap k cua n phan tu  = n! / [k! * (n-k)!]
+ll C(int k, int n){
+    return gt(n) / (gt(k) * gt(n-k));
 }
 
 int main(){
+    int n; cin >> n;
 
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j <= i; j++){
+            cout << C(j, i) << " ";
+        }
+        cout << "\n";
+    }
     return 0;
 }
