@@ -35,27 +35,46 @@ int ptsnt(ll n){
             counter++;
             n /= i;
         }
+
         counter2 = max(counter, counter2);
     }
     return counter2;
 }
 
+bool primeCheck(ll n){
+    if(n < 2) {
+        return false;
+    }
+    for(ll i = 2; i*i <= n; i++){
+        if(n % i == 0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
 int main() {
     ll n; cin >> n;
-    int maxU = ptsnt(n);
-    int counter;
-    for(ll i = 2; i*i <= n; i++){
-        counter = 0;
-        if(n % i == 0){
-            while(n % i == 0){
-                counter++;
-                n /= i;
-            }
-            if(counter == maxU){
-                cout << i << " " << maxU;
-                return 0;
-            } else {
-                continue;
+    if(primeCheck(n)){
+        cout << n << " " << 1;
+        return 0;
+    } else {
+        int maxU = ptsnt(n);
+        int counter;
+        for(ll i = 2; i*i <= n; i++){
+            counter = 0;
+            if(n % i == 0){
+                while(n % i == 0){
+                    counter++;
+                    n /= i;
+                }
+                if(counter == maxU){
+                    cout << i << " " << maxU;
+                    return 0;
+                } else {
+                    continue;
+                }
             }
         }
     }
