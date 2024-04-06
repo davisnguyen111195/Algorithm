@@ -45,6 +45,32 @@
 // 3 4
 
 
+// #include <iostream>
+// #include <cmath>
+// #include <map>
+// using namespace std;
+
+// int main(){
+//     int n; cin >> n;
+//     int t[n];
+//     map<int, int> mapArr;
+//     for(int i = 0; i < n; i++){
+//         cin >> t[i];
+//         mapArr[t[i]]++;
+//     }
+//     for(int i = 0; i < n; i++){
+//         if(mapArr[t[i]] != 0){
+//             cout << t[i] << " " << mapArr[t[i]] << endl;
+//             mapArr.erase(t[i]);
+//         }
+        
+//     }
+//     return 0;
+// }
+
+
+
+
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -57,25 +83,14 @@ int main(){
         cin >> t[i];
     }
     int mark[1002] = {0};
-    int max_Val = -1;
     for(int j = 0; j < n; j++){
-        int cnt = 0;
-        for(int k = 0; k < n; k++){
-            if(t[j] == t[k]){
-                cnt++;
-            }
-
-
-        }
-        max_Val = max(max_Val, t[j]);
-        mark[t[j]] = cnt;
+        mark[t[j]]++;
     }
-    for(int l = 0; l < max_Val; l++){
+    for(int l = 0; l < n; l++){
         if(mark[t[l]] != 0 ){
             cout << t[l] << " " << mark[t[l]] << endl;
+            mark[t[l]] = 0;
         }
-        
-        
     }
     return 0;
 }
