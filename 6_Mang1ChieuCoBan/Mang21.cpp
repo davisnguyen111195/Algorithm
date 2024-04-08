@@ -54,4 +54,60 @@
 // 716
 // 53
 
+#include <iostream>
+#include <cmath>
+using namespace std;
 
+int main(){
+    int n; cin >> n;
+    int a[n];
+    int b[1007] = {0};
+    int maxA = -1;
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        b[a[i]]++;
+        maxA = max(maxA, a[i]);
+    }
+    int soLanMax = -1;
+    int soLanMin = 1007;
+    int c[1007] = {0};
+    for(int v = 0; v < maxA; v++){
+        if(b[v] > 0){
+            c[v] = b[v];
+        }
+    }
+    for(int l = 0; l < n; l++){
+        if(c[a[l]] > 0){
+            cout << a[l] << " " << c[a[l]] << endl;
+            c[a[l]] = 0;
+        }
+        
+        soLanMax = max(soLanMax, b[a[l]]);
+        soLanMin = min(soLanMin, b[a[l]]);
+    }
+
+    cout << endl;
+    
+    for(int k = 0; k < maxA; k++){
+        if(b[k] > 0) {
+            cout << k << " " << b[k] << endl;
+            
+        }
+        
+    }
+
+    cout << endl;
+    int maxCaoNhat = -1;
+    int minThapNhat = 1007;
+    for(int m = 0; m < n; m++){
+        if(b[a[m]] == soLanMax){
+            maxCaoNhat = max(maxCaoNhat, a[m]);
+        }
+        if(b[a[m]] == soLanMin){
+            minThapNhat = min(minThapNhat, a[m]);
+        }
+    }
+    cout << maxCaoNhat << endl;
+    cout << minThapNhat << endl;
+    return 0;
+}
