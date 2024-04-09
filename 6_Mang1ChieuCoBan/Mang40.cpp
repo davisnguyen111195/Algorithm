@@ -35,10 +35,29 @@
 
 
 #include <iostream>
-
+#include <cmath>
 using namespace std;
 
 int main(){
+    int n; cin >> n; int a[n];
+    int b[10] = {0};
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+        int k = abs(a[i]);
+        if(k == 0){
+            b[0]++;
+        }
+        while(k != 0){
+            int check = k % 10;
+            b[check]++;
+            k /= 10;
+        }
+    }
 
+
+    for(int i = 0; i < 10; i++){
+        if(b[i])
+            cout << i << " " << b[i] << endl;
+    }
     return 0;
 }
