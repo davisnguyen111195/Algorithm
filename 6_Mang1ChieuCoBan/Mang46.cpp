@@ -45,7 +45,7 @@ int main(){
         if(i!=j){
             cnt += 1ll * d[i] * d[j];
         } else {
-            //to hop chap k cua n phan tu.
+            //to hop chap 2 cua n phan tu.
             cnt += 1ll * d[i] * (d[i] - 1) / 2;
         }
         
