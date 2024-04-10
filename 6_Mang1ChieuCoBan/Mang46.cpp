@@ -27,16 +27,33 @@
 
 
 #include <iostream>
-
+#define ll long long
 using namespace std;
+
 
 int main(){
     int n; cin >> n; int a[n];
-
+    int d[28] = {0};
     for(int i = 0; i < n; i++){
         cin >> a[i];
+        //danh dau phan du cua 28 vao mang (a+b)%28 = (a%28 + b%28) % 28
+        d[a[i] % 28]++;
     }
-
-    
+    ll cnt = 0;
+    for(int i = 0; i <= 14; i++){
+        int j = (28 - i) % 28;
+        if(i!=j){
+            cnt += 1ll * d[i] * d[j];
+        } else {
+            //to hop chap k cua n phan tu.
+            cnt += 1ll * d[i] * (d[i] - 1) / 2;
+        }
+        
+    }
+    cout << cnt;
     return 0;
 }
+
+// (a+b)%28 = (a%28 + b%28) % 28
+// truong hop 1: (a + b) % 28 = 0 tnh toan la a lan * b lan.
+// truong hop 2: (0 + 0) % 28 = 0 tinh loan la to hop chap 2 cua n phan tu.
