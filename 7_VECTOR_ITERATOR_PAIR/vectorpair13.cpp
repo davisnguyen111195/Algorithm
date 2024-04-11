@@ -54,5 +54,24 @@
 // 3 7 6 5 7 
 
 
+#include <stdio.h>
+#include <iostream>
+#include <vector>
 
+using namespace std;
+
+void nhap(vector<vector<int>> &n, int n, int m);
+void xuat(vector<vector<int>> v, int n, int m);
+void lat(vector<vector<int>> &v, int n, int m);
+
+
+int main(){
+
+    #ifndef ON
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+
+
+}
 
