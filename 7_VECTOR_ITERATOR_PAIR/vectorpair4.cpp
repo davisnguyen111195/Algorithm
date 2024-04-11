@@ -23,3 +23,25 @@
 // 3 8 5 3 
 // 3 5 8 3 
 
+#include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+    int n; cin >> n;
+    vector<int> vts;
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        vts.push_back(x); 
+    }
+
+    vector<int>::iterator it = vts.begin();
+    int l, r; cin >> l >> r;
+    for(auto i = it + l; i <= it + r; i++){
+        cout << *i << " ";
+    }
+    cout << endl;
+    for(auto i = it + r; i >= it + l; i--){
+        cout << *i << " ";
+    }
+    return 0;
+}
