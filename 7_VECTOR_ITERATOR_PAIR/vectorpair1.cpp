@@ -33,5 +33,5 @@ int main(){
     } else {
         cout << "EMPTY";
     }
-    return 0;
+    //return 0;
 }

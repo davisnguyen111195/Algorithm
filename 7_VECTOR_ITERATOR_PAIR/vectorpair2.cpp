@@ -39,3 +39,59 @@
 
 // 70 87 47 22 
 
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+    // #ifndef ONLINE_JUDGE
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
+    int n; cin >> n;
+    vector<int> vts;
+
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        vts.push_back(x);
+    }
+
+    int m; cin >> m;
+    while(m--){
+        int t; cin >> t;
+        switch(t){
+            case 1:
+                int vi; cin >> vi;
+                int giatri; cin >> giatri;
+                if(vi >= 0 && vi <= (int)vts.size()){
+                    vts.insert(vts.begin() + vi, giatri);
+                } else {
+                    break;
+                }
+                
+                break;
+            case 2:
+                if(!vts.empty()){
+                    int vi; cin >> vi;
+                    if(vi >= 0 && vi <= ((int)vts.size() - 1)){
+                        vts.erase(vts.begin() + vi);
+                    } else {
+                        break;
+                    }
+                } else {
+                    break;
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    if(vts.empty()){
+        cout << "EMPTY";
+        return 0;
+    } else {
+        for(int vt : vts){
+            cout << vt << " ";
+        }
+    }
+    return 0;    
+}
