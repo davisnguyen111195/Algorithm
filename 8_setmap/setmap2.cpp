@@ -36,10 +36,109 @@
 #include <iostream>
 #include <map>
 #include <set>
-
+#include <algorithm>
 using namespace std;
 
+
+bool binary_search(int a[], int n, int x){
+    int l = 0, r = n - 1;
+    while(l <= r){
+        int half = (l+r)/ 2;
+        if(a[half] == x){
+            return true;
+        } else if(a[half] < x){
+            l = half + 1;
+        } else {
+            r = half - 1;
+        }
+    }
+    return false;
+}
+
+//dung binary search
 int main(){
-    
+    int n; cin >> n; int a[n];
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        a[i] = x;
+    }
+    sort(a, a+n);
+    int testCase; cin >> testCase;
+    while(testCase--){
+        int target; cin >> target;
+        if(binary_search(a, n, target)){
+            cout << "YES" << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+    }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+// //dung map
+// int main(){
+
+//     int n; cin >> n;
+//     map<int, int> mX;
+//     for(int i = 0; i < n; i++){
+//         int x; cin >> x;
+//         mX[x]++;
+//     }
+
+//     int testCase; cin >> testCase;
+//     while(testCase--){
+//         int k; cin >> k;
+//         if(mX.find(k) != mX.end()){
+//             cout << "YES" << endl;
+//         } else {
+//             cout << "NO" << endl;
+//         }
+//     }
+//     return 0;
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// //dung set
+// int main(){
+//     int n; cin >> n; 
+//     set<int> sX;
+//     for(int i = 0; i < n; i++){
+//         int x; cin >> x;
+//         sX.insert(x);
+//     }
+
+//     int t; cin >> t;
+//     while(t--){
+//         int k; cin >> k;
+//         if(sX.find(k) != sX.end()){
+//             cout << "YES" << endl;
+//         } else {
+//             cout << "NO" << endl;
+//         }
+//     }
+//     return 0;
+// }
