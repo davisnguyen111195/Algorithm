@@ -60,18 +60,62 @@
 
 using namespace std;
 
-void nhap(vector<vector<int>> &n, int n, int m);
+void nhap(vector<vector<int>> &v, int n, int m);
 void xuat(vector<vector<int>> v, int n, int m);
 void lat(vector<vector<int>> &v, int n, int m);
-
+void swap(int* a, int* b);
 
 int main(){
 
-    #ifndef ON
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+    // #ifndef ON
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
+    int n, m; cin >> n >> m;
 
-
+    vector<vector<int>> vts;
+    nhap(vts, n, m);
+    lat(vts, n, m);
+    cout << endl;
+    xuat(vts, n, m);
+    return 0;
 }
 
+void nhap(vector<vector<int>> &v, int n, int m){
+    for(int i = 0; i < n; i++){
+        vector<int> vt;
+        for(int j = 0; j < m; j++){
+            int x; cin >> x;
+            vt.push_back(x);
+        }
+        v.push_back(vt);
+        vt.clear();
+    }
+}
+
+void xuat(vector<vector<int>> v, int n, int m){
+    for(auto items : v){
+        for(auto item : items){
+            cout << item << " ";
+        }
+        cout << endl;
+    }
+}
+
+void lat(vector<vector<int>> &v, int n, int m){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            int end = m - j - 1;
+            if(j <= end){
+                swap(v[i][j], v[i][end]);
+            }
+        }
+    }
+}
+
+void swap(int* a, int* b){
+
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
