@@ -52,9 +52,10 @@ using namespace std;
 int main(){
     int n, q; cin >> n >> q;
 
-    int m; cin >> m;
+    
     vector<vector<int>> vts;
     for(int i = 0; i < n; i++){
+        int m; cin >> m;
         vector<int> vt;
         for(int j = 0; j < m; j++){
             int x; cin >> x;
