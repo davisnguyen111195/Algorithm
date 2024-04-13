@@ -13,31 +13,24 @@ int main(){
     int n; cin >> n;
     map<int, int> mX; 
     for(int i = 1; i <= n; i++){
-
-        for(int j = 0; j < n; j++){
+        for(int j = 1; j <= n; j++){
             int x; cin >> x;
-            if(i == 1){
-                mX[x] = 1;
-            } else {
-                if(mX.find(x) != mX.end()){
-                    if(i - mX[x] == 1){
-                        mX[x]++;
-                    } else {
-                        break;
-                    }
-                }
+            if(mX[x] == i - 1){
+                mX[x] = i;
             }
-            
         }
     }
-    int cnt = 0;
-    for(auto item : mX){
-        if(item.second == n){
-            cout << item.first << " ";
-            cnt++;
+
+    bool check = false;
+
+    for(auto it : mX){
+        if(it.second == n){
+            cout << it.first << " ";
+            check = true;
         }
     }
-    if(cnt == 0){
+
+    if(!check){
         cout << "NOT FOUND";
     }
 
