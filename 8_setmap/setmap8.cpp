@@ -55,5 +55,46 @@
 // 81
 // 16
 
+#include <iostream>
+#include <stdio.h>
+#include <set>
+#include <map>
 
+using namespace std;
+
+int main(){
+    #ifndef ON
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    int n; cin >> n;
+    multiset<int> msX;
+    for(int i = 0; i < n; i++){
+        int x; cin >> x;
+        msX.insert(x);
+    }
+    int t; cin >> t;
+    while(t--){
+        int a; cin >> a;
+        switch (a){
+            case 1:
+                int x; cin >> x;
+                msX.insert(x);
+                break;
+            case 2:
+                int k; cin >> k;
+                msX.erase(k);
+                break;
+            case 3:
+                cout << *msX.begin() << endl;
+                break;
+            case 4:
+                cout << *(--msX.end()) << endl;
+                break;
+            
+
+        }
+    }
+    return 0;
+}
 
