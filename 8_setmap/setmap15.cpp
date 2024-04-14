@@ -69,13 +69,9 @@ int main(){
     #endif
     int n; cin >> n;
     multiset<int> msX;
-    multimap<int, int> mX;
-    vector<int> a;
     for(int i = 0; i < n; i++){
         int x; cin >> x;
         msX.insert(x);
-        mX.insert({x, i});
-        a.push_back(x);
     }
 
     int t; cin >> t;
@@ -84,15 +80,11 @@ int main(){
         if(ac == 1){
             int x; cin >> x;
             msX.insert(x);
-            mX.insert({x, n++});
-            a.push_back(x);
         } else if(ac == 2){
             int k; cin >> k;
             auto it = msX.find(k);
-            auto itMap = mX.find(k);
             if(it != msX.end()){
                 msX.erase(it);
-                mX.erase(itMap);
             }
         } else if(ac == 4){
             int p; cin >> p;
