@@ -63,43 +63,67 @@
 using namespace std;
 
 int main(){
+    #ifndef O
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
     int n; cin >> n;
     multiset<int> msX;
+    multimap<int, int> mX;
+    vector<int> a;
     for(int i = 0; i < n; i++){
         int x; cin >> x;
         msX.insert(x);
+        mX.insert({x, i});
+        a.push_back(x);
     }
 
     int t; cin >> t;
     while(t--){
         int ac; cin >> ac;
-        switch(ac){
-            case 1:
-                int x; cin >> x;
-                msX.insert(x);
-                break;
-            case 2:
-                int k; cin >> k;
-                auto it = msX.find(k);
-                if(it != msX.end()){
-                    msX.erase(it);
-                }
-                break;
-            case 3:
-                int l; cin >> l;
-                auto itThree = msX.lower_bound(msX.begin(), msX.end(), l);
-                if(itThree != msX.end()){
-                    cout << *itThree << endl;
-                } else {
+        if(ac == 1){
+            int x; cin >> x;
+            msX.insert(x);
+            mX.insert({x, n++});
+            a.push_back(x);
+        } else if(ac == 2){
+            int k; cin >> k;
+            auto it = msX.find(k);
+            auto itMap = mX.find(k);
+            if(it != msX.end()){
+                msX.erase(it);
+                mX.erase(itMap);
+            }
+        } else if(ac == 4){
+            int p; cin >> p;
+            if(msX.count(p)){
+                cout << p << endl;
+                continue;;
+            } else {
+                if(p < *(msX.begin())){
                     cout << -1 << endl;
+                    continue;;
+                } else {
+                    for(auto it = msX.rbegin(); it != msX.rend(); it++){
+                        if(p > *it){
+                            cout << *it << endl;
+                            break;
+                        }
+                    }
                 }
-                
-                break;
-            case 4:
-                int p; cin >> p;
-                auto itFour = msX.upper_bound(msx.begin())
-
+            }
+        } else if(ac == 3){
+            int l; cin >> l;
+            auto itThree = lower_bound(msX.begin(), msX.end(), l);
+            if(itThree != msX.end()){
+                cout << *itThree << endl;
+            } else {
+                cout << -1 << endl;
+            }
+        } else {
+            continue;
         }
+        
     }
     return 0;
 }
