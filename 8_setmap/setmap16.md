@@ -25,18 +25,18 @@ You have to output each query in a new line.
 
 **Sample Input**
 ```
- 8
- 1 1 2 2 6 9 9 15
- 4
- 1
- 4
- 9
- 15
+8
+1 1 2 2 6 9 9 15
+4
+1
+4
+9
+15
 ```
 **Sample Output**
 ```
- Yes 1
- No 5
- Yes 6
- Yes 8
+Yes 1
+No 5
+Yes 6
+Yes 8
 ```
