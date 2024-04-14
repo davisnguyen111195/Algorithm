@@ -35,7 +35,9 @@ The first line of the input contains  where  is the number of queries. The next 
 
 **Constraints**
 $1 \leq Q \leq 10^5$
+
 $1 \leq y \leq 3$
+
 $1 \leq x \leq 10^9$
 
 
