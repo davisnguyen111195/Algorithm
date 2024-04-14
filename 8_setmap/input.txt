@@ -1,8 +1,2 @@
-7
-1 Jesse 20
-1 Jess 12
-1 Jess 18
-3 Jess
-3 Jesse
-2 Jess
-3 Jess
+17
+1 0 9 1 5 1 4 7 9 7 5 2 6 3 3 4 8 
