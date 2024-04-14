@@ -34,6 +34,7 @@ To know more about sets [click Here](https://cplusplus.com/reference/set/set/). 
 The first line of the input contains  where  is the number of queries. The next  lines contain  query each. Each query consists of two integers  and  where  is the type of the query and  is an integer.
 
 **Constraints**
+
 $1 \leq Q \leq 10^5$
 
 $1 \leq y \leq 3$
