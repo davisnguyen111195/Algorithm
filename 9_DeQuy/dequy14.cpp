@@ -21,3 +21,24 @@
 // 6
 
 #include <iostream>
+
+typedef long long ll;
+
+using namespace std;
+
+int countNum(ll n){
+    if(n <= 9){
+        return 1;
+    } else {
+        if(n == 0){
+            return 0;
+        } else {
+            return 1 + countNum(n / 10);
+        }
+    }
+}
+
+int main(){
+    ll n; cin >> n;
+    cout << countNum(n);
+}
