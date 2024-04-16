@@ -21,12 +21,28 @@
 
 // YES
 
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
+bool checkDX(int a[], int l, int r){ 
+    if(l >= r){
+        return true;
+    } 
+    return (a[l] == a[r]) && checkDX(a, l + 1, r - 1);
 
+}
 
-int main(){
-
+int main(){ 
+    int n; cin >> n; int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    if(checkDX(a, 0, n-1)){
+        cout << "YES";
+    } else {
+        cout << "NO";
+    }
+    return 0;
 }
