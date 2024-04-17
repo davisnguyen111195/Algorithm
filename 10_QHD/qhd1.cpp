@@ -40,13 +40,20 @@
 typedef long long ll;
 using namespace std;
 
-ll f[10007];
-
-void f(ll &f){
-    
+ll f[1000006];
+const ll mod = 1e9+7;
+ll gt(ll n){
+    if(n == 0) return 1;
+    if(f[n]) return f[n];
+    f[n] = n * gt(n-1) % mod;
+    return f[n];
 }
 
 int main(){
-
+    int t; cin >> t;
+    while(t--){
+        int n; cin >> n;
+        cout << gt(n) << endl;
+    }
     return 0;
 }
