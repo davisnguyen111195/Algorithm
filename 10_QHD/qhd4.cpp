@@ -45,6 +45,8 @@ int fcnt[1000002];
 void sang(){
     f[0] = false;
     f[1] = false;
+    fcnt[0] = 0;
+    fcnt[1] = 0;
     for(int i = 2; i <= 1000000; i++){
         f[i] = true;
     }
@@ -60,17 +62,11 @@ void sang(){
 
 int main(){
     sang();
-
-    
     for(int i = 2; i <= 1000000; i++){
         if(f[i]){
-            int cnt = 0;
-            for(int j = i; j <= 1000000; j++){
-                if(f[j]){
-                    cnt++;
-                }
-            }
-            fcnt[i] = cnt;
+            fcnt[i] = fcnt[i-1] + 1;
+        } else {
+            fcnt[i] = fcnt[i-1];
         }
     }
     int t; cin >> t;
