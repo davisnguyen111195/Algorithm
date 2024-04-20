@@ -91,7 +91,7 @@ int main(){
         cout << x << " ";
     }
     cout << endl;
-    sort(b, b+n, cmp2);
+    stable_sort(b, b+n, cmp2);
     for(ll x : b){
         cout << x << " ";
     }
