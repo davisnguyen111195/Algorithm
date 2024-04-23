@@ -30,7 +30,33 @@
 
 using namespace std;
 
+void swap(int* a, int* b){
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
+
 int main(){
+    int n; cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    int cnt = 1;
+    for(int i = 1; i < n; i++){
+        for(int j = i; j > 0; j--){
+            if(a[j] < a[j-1]){
+                swap(a[j], a[j-1]);
+            }
+        }
+
+        cout << "Buoc " << cnt << ": ";
+        for(int item : a){
+            cout << item << " ";
+        }
+        cout << endl;
+        cnt++;
+    }
 
     return 0;
 }
