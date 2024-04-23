@@ -32,17 +32,19 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> a[i];
     }
+    vector<int> vNu;
     for(int i = 0; i < m; i++){
         cin >> b[i];
+        vNu.push_back(b[i]);
     }
     sort(a, a+n, greater<int>());
-    sort(b, b+m);
-    int cnt = 0;
-    for(int i = 0; i < n; i++){
-        if(a[i] > b[i]){
-            cnt++;
+    sort(vNu.begin(), vNu.end(), greater<int>());
+    for(auto it = vNu.begin(); it != vNu.end(); it++){
+        if(*it > a[0]){
+            vNu.erase(it);
         }
     }
-    cout << cnt;
+
+    cout << vNu.size();
     return 0;
 }
