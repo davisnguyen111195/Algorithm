@@ -24,18 +24,35 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+bool cmp(pair<int, int> a, pair<int, int> b){
+    if(a.second != b.second){
+        return a.second < b.second;
+    } else {
+        return a.first > b.first;
+    }
+}
 
 int main(){
+    // #ifndef O
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
     int n; cin >> n;
-    int a[n];
     map<int, int> mX;
 
     for(int i = 0; i < n; i++){
-        cin >> a[i];
-        mX[a[i]]++;
-        
+        int x; cin >> x;
+        mX[x]++;
     }
-
+    vector<pair<int, int>> vX;
+    for(auto item : mX){
+        pair<int, int> pX;
+        pX.first = item.first;
+        pX.second = item.second;
+        vX.push_back(pX);
+    }
+    sort(vX.begin(), vX.end(), cmp);
+    auto res = vX.back();
+    cout << res.first << " " << res.second;
     return 0;
 }
