@@ -21,6 +21,30 @@
 
 // 4
 
+// #include <bits/stdc++.h>
+
+// using namespace std;
+
+// int main(){
+//     int n; cin >> n;
+//     int a[n];
+//     for(int i = 0; i < n; i++){
+//         cin >> a[i];
+//     }
+
+//     sort(a, a+n);
+
+//     int d = 0;
+//     for(int i = 0; i < n; i++){
+//         if(d <= a[i]){
+//             d++;
+//         }
+//     }
+//     cout << d;
+//     return 0;
+// }
+
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -31,17 +55,15 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> a[i];
     }
-    int res;
+    int res = 0;
+    int cnt = 0;
     sort(a, a+n);
     for(int i = 0; i < n; i++){
         res = a[i] - i;
-        if(res < 0){
-            cout << a[i-1];
-            return 0;
+        if(res >= 0){
+            cnt++;
         }
     }
-    if(res >= 0){
-        cout << a[n-1];
-    }
+    cout << cnt;
     return 0;
 }
