@@ -29,22 +29,31 @@ using namespace std;
 int main(){
     int n, m; cin >> n >> m;
     int a[n], b[m];
+    vector<int> vNam;
     for(int i = 0; i < n; i++){
         cin >> a[i];
+        vNam.push_back(a[i]);
     }
     vector<int> vNu;
     for(int i = 0; i < m; i++){
         cin >> b[i];
         vNu.push_back(b[i]);
     }
-    sort(a, a+n, greater<int>());
+    sort(vNam.begin(), vNam.end(), greater<int>());
     sort(vNu.begin(), vNu.end(), greater<int>());
-    for(auto it = vNu.begin(); it != vNu.end(); it++){
-        if(*it > a[0]){
-            vNu.erase(it);
-        }
+
+    while(*(vNu.begin()) >= *(vNam.begin())){
+        vNu.erase(vNu.begin());
     }
 
-    cout << vNu.size();
+    while(*(--vNu.end()) >= *(--vNam.end())){
+        vNam.erase(--vNam.end());
+    }
+
+    if(vNu.size() > vNam.size()){
+        cout << vNu.size();
+    } else {
+        cout << vNam.size();
+    }
     return 0;
 }
