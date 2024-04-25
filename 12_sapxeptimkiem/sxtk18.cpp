@@ -28,8 +28,54 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+int lastEqualPos(int a[], int l, int r, int x){
+    int res = -1;
+    while(l <= r){
+        int mid = (l+r)/2;
+        if(a[mid] < x){
+            res = mid;
+            l = mid + 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    return res;
+}
+int firstEqualPos(int a[], int l, int r, int x){
+    int res = -1;
+    while(l <= r){
+        int mid = (l+r)/2;
+        if(a[mid] < x){
+            res = mid;
+            r = mid - 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    return res;
+}
 int main(){
-
+    int n, k; cin >> n >> k;
+    int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    sort(a, a+n);
+    long long cnt = 0;
+    for(int i = 0; i < n-1; i++){
+        int target;
+        if(k > a[i]){
+            target = k - a[i];
+            int first = firstEqualPos(a, i+1, n-1, target);
+            int last = lastEqualPos(a, i+1, n-1, target);
+            if(first != -1 && last != -1){
+                cnt += last - first + 1;
+            }
+            
+        } else {
+            continue;
+        }
+    }
+    cout << cnt;
     return 0;
 }
