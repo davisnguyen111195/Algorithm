@@ -22,7 +22,7 @@
 // 10
 
 #include <bits/stdc++.h>
-
+#define ll long long
 using namespace std;
 
 int main(){
@@ -32,15 +32,14 @@ int main(){
         cin >> a[i];
     }
     sort(a, a+n, greater<int>());
-    int sum = 0;
+    ll sum = 0;
     int cnt = 0;
     for(int i = 0; i < n; i++){
-        int delta = a[i]-cnt;
-        if(delta <= 0){
-            break;
+        if(cnt < a[i]){
+            sum += a[i]-cnt;
+            cnt++;
         }
-        sum += delta;
-        cnt++;
+        
     }
     cout << sum;
     return 0;
