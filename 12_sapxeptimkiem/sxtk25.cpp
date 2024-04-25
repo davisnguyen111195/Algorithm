@@ -40,5 +40,14 @@ int main(){
 
     sort(vX.begin(), vX.end());
 
+    long long cnt = (*vX.begin()).first + (*vX.begin()).second;
+    for(auto it = ++vX.begin(); it != vX.end(); it++){
+        if(cnt < (*it).first){
+            cnt = (*it).first + (*it).second;
+        } else {
+            cnt = cnt + (*it).second;
+        }
+    }
+    cout << cnt;
     return 0;
 }
