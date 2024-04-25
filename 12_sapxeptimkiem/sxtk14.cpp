@@ -22,7 +22,11 @@
 // 10
 
 #include <bits/stdc++.h>
+<<<<<<< HEAD
 #define ll long long
+=======
+
+>>>>>>> dba34c1 (chua xong 14)
 using namespace std;
 
 int main(){
@@ -32,6 +36,7 @@ int main(){
         cin >> a[i];
     }
     sort(a, a+n, greater<int>());
+<<<<<<< HEAD
     ll sum = 0;
     int cnt = 0;
     for(int i = 0; i < n; i++){
@@ -40,6 +45,17 @@ int main(){
             cnt++;
         }
         
+=======
+    int sum = 0;
+    int cnt = 0;
+    for(int i = 0; i < n; i++){
+        int delta = a[i]-cnt;
+        if(delta <= 0){
+            break;
+        }
+        sum += delta;
+        cnt++;
+>>>>>>> dba34c1 (chua xong 14)
     }
     cout << sum;
     return 0;
