@@ -32,5 +32,13 @@ using namespace std;
 
 int main(){
     int n; cin >> n;
+    vector<pair<int, int>> vX;
+    while(n--){
+        int a, b; cin >> a >> b;
+        vX.push_back({a, b});
+    }
+
+    sort(vX.begin(), vX.end());
+
     return 0;
 }
