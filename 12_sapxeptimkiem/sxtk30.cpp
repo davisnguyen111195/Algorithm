@@ -21,4 +21,27 @@
 
 // 2.5000000000
 
-#include 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    int n, l;
+    cin >> n >> l;
+    int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
+    sort(a, a+n);
+
+    double res = max(a[0] - 0, l - a[n-1]);
+    for(int i = 1; i < n; i++){
+        double delta = 1.0*abs(a[i] - a[i-1]) / 2;
+        res = max(res, delta);
+    }
+   
+
+    cout << fixed << setprecision(10) << res;
+    
+    return 0;
+}
