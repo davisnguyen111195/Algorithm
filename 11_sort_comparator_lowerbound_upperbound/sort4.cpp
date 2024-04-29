@@ -69,11 +69,8 @@ bool cmp(ll a, ll b){
 }
 
 bool cmp2(ll a, ll b){
-    if(cntOdd(a) != cntOdd(b)){
-        return cntOdd(a) < cntOdd(b);
-    } else {
-        return &a < &b;
-    }
+    return cntOdd(a) < cntOdd(b);
+    
 }
 
 int main(){
