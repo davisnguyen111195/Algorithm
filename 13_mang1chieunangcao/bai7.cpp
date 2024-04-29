@@ -38,22 +38,49 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> a[i];
     }
-    ll sum = 0;
+
     if(a[0] != 25){
         cout << "NO";
         return 0;
-    } else {
-        sum = 25;
     }
-    for(int i = 1; i < n; i++){
-        if(sum - a[i] < 0){
-            cout << "NO";
-            return 0;
+    map<int, int> mX;
+    mX[25] = 0;
+    mX[50] = 0;
+    mX[100] = 0;
+    for(int i = 0; i < n; i++){
+        if(a[i] == 25){
+            mX[25]++;
+        } else if(a[i] == 50){
+            mX[50]++;
+            mX[25]--;
+            if(mX[25] < 0){
+                cout << "NO";
+                return 0;
+            }
+        } else if(a[i] == 100){
+            mX[100]++;
+            if(mX[50] >= 1 && mX[25] >= 1){
+                mX[50]--;
+                mX[25]--;
+                if(mX[25] < 0 || mX[50] < 0){
+                    cout << "NO";
+                    return 0;
+                }
+            } else if(mX[50] < 1 && mX[25] >= 1){
+                mX[25] -= 3;
+                if(mX[25] < 0){
+                    cout << "NO";
+                    return 0;
+                }
+            } else {
+                cout << "NO";
+                return 0;
+            }
         }
-        sum += 25;
-        
+    }  
+
+    if(mX[25] >= 0 && mX[50] >= 0 && mX[100] >= 0){
+        cout << "YES";
     }
-    cout << "YES";
-        
     return 0;
 }
