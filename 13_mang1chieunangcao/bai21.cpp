@@ -47,17 +47,31 @@ int firstPos(int a[], int l, int r, int x){
     return res;
 }
 int main(){
-    #ifndef O
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
+    // #ifndef O
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
+    // #endif
     int n, x; cin >> n >> x;
     int a[n];
-    map<int, int> mX;
+    multimap<int, int> mX;
     for(int i = 0; i < n; i++){
         cin >> a[i];
+        mX.insert({i+1, a[i]});
     }
-    cout << firstPos(a, 0, n-1, x);
+    for(auto it = mX.begin(); it != mX.end(); it++){
+        if((*it).second == x){
+            cout << (*it).first << " ";
+            break;
+        }
+    }
+    for(auto it = mX.rbegin(); it != mX.rend(); it++){
+        if((*it).second == x){
+            cout << (*it).first << " ";
+            return 0;
+        }
+    }
+    cout << -1 << " " << -1;
+
 
     return 0;
 }
