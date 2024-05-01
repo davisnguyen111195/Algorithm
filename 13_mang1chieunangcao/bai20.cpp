@@ -27,6 +27,10 @@
 using namespace std;
 
 int main(){
+    #ifndef O
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
     int n; cin >> n;
     int a[n], b[n];
     for(int i = 0; i < n; i++){
@@ -36,12 +40,22 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> b[i];
     }
+    sort(a, a+n);
+    sort(b, b+n, greater<int>());
+
     int i = 0, j = 0;
+    int c[2*n];
     for(int k = 0; k < 2*n; k++){
-        if(a[i] % 2 == 0 && b[j] % 2 == 1){
-            
+        if(k % 2 == 0){
+            c[k] = a[i];
+            i++;
+        } else {
+            c[k] = b[j];
+            j++;
         }
     }
-
+    for(int item: c){
+        cout << item << " ";
+    }
     return 0;
 }
