@@ -31,14 +31,13 @@ int main(){
     for(int i = 0; i < n; i++){
         cin >> a[i];
     }
-
+    sort(a, a+n);
     ll maxX = -1;
     ll b[n]; b[0] = 0;
     for(int i = 1; i < n; i++){
         b[i] = (b[i-1] % mod + (a[i] % mod * i % mod) % mod) % mod;
-        maxX = max(maxX, b[i]);
     }
 
-    cout << maxX;
+    cout << b[n-1];
     return 0;
 }
