@@ -22,14 +22,30 @@
 // 604
 
 #include <bits/stdc++.h>
-
+using ll = long long;
 using namespace std;
-
+ll sumArray(int a[]){
+    int rangeA = sizeof a / sizeof(int);
+    ll sum = 0;
+    for(int i = 0; i <= rangeA; i++){
+        sum = sum*10 + a[i];
+    }
+    return sum;
+}
 int main(){
     int n; cin >> n;
     int a[n];
+    multiset<int> sX;
     for(int i = 0; i < n; i++){
         cin >> a[i];
+        sX.insert(a[i]);
+    }
+    int n1 = n/2; int b[n1];
+    int n2 = n - n1; int c[n2];
+    int k = 0, l = 0;
+    ll sum1 = 0, sum2 = 0;
+    while(sX.size() != 0){
+
     }
     
     return 0;
