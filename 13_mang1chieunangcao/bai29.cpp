@@ -35,18 +35,18 @@ ll sumArray(int a[]){
 int main(){
     int n; cin >> n;
     int a[n];
-    multiset<int> sX;
     for(int i = 0; i < n; i++){
         cin >> a[i];
-        sX.insert(a[i]);
     }
-    int n1 = n/2; int b[n1];
-    int n2 = n - n1; int c[n2];
-    int k = 0, l = 0;
+    sort(a, a+n);
     ll sum1 = 0, sum2 = 0;
-    while(sX.size() != 0){
-
+    for(int i = 0; i < n; i++){
+        if(i % 2 == 0){
+            sum1 = sum1 * 10 + a[i];
+        } else {
+            sum2 = sum2 * 10 + a[i];
+        }
     }
-    
+    cout << sum1 + sum2;
     return 0;
 }
