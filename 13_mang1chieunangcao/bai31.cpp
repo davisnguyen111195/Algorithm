@@ -27,7 +27,17 @@
 using namespace std;
 
 int main(){
+    int n; cin >> n;
+    int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
+    }
 
+    sort(a, a+n);
 
+    long long a1 = abs(a[0] + a[1]);
+    long long a2 = abs(a[n-1] + a[n-2]);
+    long long result = max(a1, a2);
+    cout << result; 
     return 0;
 }
