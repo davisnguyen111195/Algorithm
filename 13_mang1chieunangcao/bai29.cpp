@@ -24,14 +24,7 @@
 #include <bits/stdc++.h>
 using ll = long long;
 using namespace std;
-ll sumArray(int a[]){
-    int rangeA = sizeof a / sizeof(int);
-    ll sum = 0;
-    for(int i = 0; i <= rangeA; i++){
-        sum = sum*10 + a[i];
-    }
-    return sum;
-}
+
 int main(){
     int n; cin >> n;
     int a[n];
