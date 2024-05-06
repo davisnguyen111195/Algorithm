@@ -22,15 +22,46 @@
 // 1
 
 #include <bits/stdc++.h>
-
+using ll = long long;
 using namespace std;
+
+int lastPos(int a[], int l, int r, int x){
+    int res = -1;
+    while(l <= r){
+        int mid = (l+r)/2;
+        if(a[mid] == x){
+            res = mid;
+            l = mid + 1;
+        } else if(a[mid] < x){
+            l = mid + 1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    return res;
+}
 
 int main(){
     int n, k; cin >> n >> k;
-    int a[n];
-    for(int i = 0; i < n; i++){
-        cin >> a[i];
+    int a[n+1]; ll sum = 0; a[0] = 0;
+    for(int i = 1; i <= n; i++){
+        int x; cin >> x;
+        sum = sum + x;
+        a[i] = sum;
     }
-
+    ll result = 1e6+4;
+    for(int i = 0; i <= n; i++){
+        int target = k + a[i];
+        ll res = lastPos(a, i+1, n, target);
+        if(res != -1){
+            result = min(result, res-i);
+        }
+    }
+    if(result != -1){
+        cout << result;
+        return 0;
+    }
+        
+    cout << -1;
     return 0;
 }
