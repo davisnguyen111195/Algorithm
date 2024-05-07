@@ -25,43 +25,32 @@
 using ll = long long;
 using namespace std;
 
-int lastPos(int a[], int l, int r, int x){
-    int res = -1;
-    while(l <= r){
-        int mid = (l+r)/2;
-        if(a[mid] == x){
-            res = mid;
-            l = mid + 1;
-        } else if(a[mid] < x){
-            l = mid + 1;
-        } else {
-            r = mid - 1;
-        }
-    }
-    return res;
-}
-
 int main(){
     int n, k; cin >> n >> k;
-    int a[n+1]; ll sum = 0; a[0] = 0;
-    for(int i = 1; i <= n; i++){
-        int x; cin >> x;
-        sum = sum + x;
-        a[i] = sum;
+    int a[n];
+    for(int i = 0; i < n; i++){
+        cin >> a[i];
     }
-    ll result = 1e6+4;
-    for(int i = 0; i <= n; i++){
-        int target = k + a[i];
-        ll res = lastPos(a, i+1, n, target);
-        if(res != -1){
-            result = min(result, res-i);
+
+    int l = 0; ll sum = 0; int cnt = 1e6+4;
+    for(int r = 0; r < n; r++){
+        sum += a[r];
+        while(sum >= k){
+            if(sum == k){
+                cnt = min(cnt, r - l + 1);
+            }
+
+            sum -= a[l];
+            l++;
         }
+
+        
     }
-    if(result != -1){
-        cout << result;
+    if(cnt != 1e6+4){
+        cout << cnt;
         return 0;
     }
-        
+
     cout << -1;
     return 0;
 }
