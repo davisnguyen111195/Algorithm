@@ -36,12 +36,44 @@
 // 5
 // 5
 // 6
-
 #include <bits/stdc++.h>
 
 using namespace std;
-
+const int q = 1e7+7;
+bool a[q];
+int b[q];
+void sang(void){
+    a[0] = false;
+    a[1] = false;
+    for(int i = 2; i < q; i++){
+        a[i] = true;
+    }
+    for(int i = 2; i*i < q; i++){
+        if(a[i] == true){
+            for(int j = i*i; j < q; j+=i){
+                a[j] = false;
+            }
+            
+        } 
+        //cout << b[i] << endl;
+    }
+}
 int main(){
-    
+    #ifndef K
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+    sang();
+
+    for(int i = 1; i <= q; i++){
+        b[i] = b[i-1] + a[i];
+    }
+    int j; cin >> j;
+    while(j--){
+        int l, r; cin >> l >> r;
+        int cnt = b[r] - b[l-1];
+
+        cout << cnt << endl;
+    }
     return 0;
 }
