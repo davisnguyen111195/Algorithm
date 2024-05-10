@@ -41,12 +41,28 @@ bool primeChecker(int n){
     return true;
 }
 
+bool d[1e9+7];
+void sang(void){
+    for(int i = 0; i < n; i++){
+        a[i] = true;
+    }
+
+    for(int i = 0; i*i < n; i++){
+        if(a[i] == true){
+            for(int j = i*i; j < n; j+=i){
+                a[i] = false;
+            }
+        }
+    }
+}
+
 
 int main(){
     #ifndef K
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
+    //sang();
     int n; cin >> n;
     int a[n][n];
     for(int i = 0; i < n; i++){
@@ -55,16 +71,18 @@ int main(){
         }
         
     }
-    set<pair<int, int>> sX;
+    //set<int> sX;
+    int cnt = 0;
     for(int i = 0; i < n; i++){
-        if(primeChecker(a[i][i])){
-            sX.insert({i, i});
+        if(d[a[i][i]]){
+            cnt++;
+            d[a[i][i]] = 0;
         }
-        if(primeChecker(a[i][n-1-i])){
-            sX.insert({i, n-i-1});
+        if(d[a[i][n-1-i]]){
+            cnt++;
+            d[a[i][n-1-i]] = 0;
         }
     }
-
-    cout << sX.size();
+    cout << cnt;
     return 0;
 }
