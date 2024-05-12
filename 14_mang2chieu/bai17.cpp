@@ -1,6 +1,6 @@
-// Cho ma trận nhị phân gồm N hàng và M cột chỉ bao gồm các số 0 và 1. Hãy đếm số lượng miền các số 1 trong ma trận, các ô số 1 được coi là cùng miền nếu chúng có chung cạnh.
+// Cho ma trận nhị phân gồm N hàng và M cột chỉ bao gồm các số 0 và 1. Hãy đếm số lượng miền các số 1 trong ma trận, các ô số 1 được coi là cùng miền nếu chúng có chung đỉnh.
 
-// Ví dụ về 1 ma trận nhị phân với 6 miền :
+// Ví dụ về ma trận nhị phân gồm 4 miền :
 
 
 
@@ -8,7 +8,7 @@
 // Dòng đầu tiên N và M. N dòng tiếp theo mỗi dòng gồm M phần tử.
 
 // Giới hạn
-// 1≤N,M≤50
+// 1≤N,M≤50.
 
 // Đầu ra
 // In ra số lượng miền số 1 trong ma trận.
@@ -16,11 +16,10 @@
 // Ví dụ :
 // Input 01
 // Copy
-// 4 7
-// 0 1 1 0 1 1 0 
-// 1 1 1 1 1 1 1 
-// 1 0 0 0 0 1 1 
-// 1 1 0 1 0 0 0
+// 3 3
+// 1 0 1
+// 0 0 1
+// 1 1 0
 // Output 01
 // Copy
 // 2
@@ -29,8 +28,8 @@
 
 using namespace std;
 
-int dx[] = {0, -1, 1, 0};
-int dy[] = {-1, 0, 0, 1};
+int dx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+int dy[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
 
 int n, m;
 int a[100][100];
@@ -45,7 +44,7 @@ void nhap(){
 
 void loang(int i, int j){
     a[i][j] = 0;
-    for(int k = 0; k < 4; k++){
+    for(int k = 0; k < 8; k++){
         int ix = i + dx[k];
         int jy = j + dy[k];
         if(ix >= 0 && ix < n && jy >= 0 && jy < m){

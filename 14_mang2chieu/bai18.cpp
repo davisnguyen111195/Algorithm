@@ -1,3 +1,4 @@
+// [Mảng 2 Chiều]. Bài 16. Đếm đảo 1
 // Cho ma trận nhị phân gồm N hàng và M cột chỉ bao gồm các số 0 và 1. Hãy đếm số lượng miền các số 1 trong ma trận, các ô số 1 được coi là cùng miền nếu chúng có chung cạnh.
 
 // Ví dụ về 1 ma trận nhị phân với 6 miền :
@@ -25,51 +26,39 @@
 // Copy
 // 2
 
+
 #include <bits/stdc++.h>
 
 using namespace std;
+int dx[8] = {-1, -1, -1, 0, 0, 1, 1, 1};
+int dy[8] = {-1, 0, 1, -1, 1, -1, 0, 1};
+int main(){
 
-int dx[] = {0, -1, 1, 0};
-int dy[] = {-1, 0, 0, 1};
-
-int n, m;
-int a[100][100];
-void nhap(){
-    cin >> n >> m;
+    
+    int n, m; cin >> n >> m;
+    int a[n][m];
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
             cin >> a[i][j];
         }
     }
-}
-
-void loang(int i, int j){
-    a[i][j] = 0;
-    for(int k = 0; k < 4; k++){
-        int ix = i + dx[k];
-        int jy = j + dy[k];
-        if(ix >= 0 && ix < n && jy >= 0 && jy < m){
-            if(a[ix][jy] == 1){
-                loang(ix, jy);
-            }
-        }
-    }
-}
-
-int main(){
-    #ifndef K
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
-
-    nhap();
 
     int cnt = 0;
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
-            if(a[i][j] == 1){
+            bool check = true;
+            for(int k = 0; k < 8; k++){
+                int ix = i + dx[k];
+                int jy = j + dy[k];
+                if(ix >= 0 && ix < n && jy >= 0 && jy < m){
+                    if(a[ix][jy] >= a[i][j]){
+                        check = false;
+                        break;
+                    }
+                }
+            }
+            if(check){
                 cnt++;
-                loang(i, j);
             }
         }
     }
