@@ -1,12 +1,33 @@
+// Cho xâu kí tự S gồm các từ được phân cách nhau bởi một vài dấu cách.
+
+// Hãy tách ra các từ thuận nghịch trong xâu và sắp xếp theo thứ tự từ điển tăng dần.
+
+// Đầu vào
+// Dòng duy nhất chứa xâu S
+
+// Giới hạn
+// 1<=len(S)<=10000
+
+// S chứa kí tự là chữ cái, chữ số và dấu cách.
+
+// Đầu ra
+// In ra các từ thuận nghịch sau khi sắp xếp
+
+// Ví dụ :
+// Input 01
+// Copy
+// IAzbbzAI   ocoS iIA ccAAAAAAcc izzbb   aoI iIiAWWAiIi
+// Output 01
+// Copy
+// IAzbbzAI ccAAAAAAcc iIiAWWAiIi
+
 #include <bits/stdc++.h>
 
 using namespace std;
 bool checkTN(string s){
-    string b = s; 
-    int j = 0;
+    string b;
     for(int i = s.size()-1; i >= 0; i--){
-        b[j] = s[i];
-        j++;
+        b.push_back(s[i]);
     }
     return b == s;
 }
