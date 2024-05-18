@@ -27,9 +27,19 @@
 using namespace std;
 
 bool cmp(string a, string b){
-    int cnta = (int)a.size();
-    int cntb = (int)b.size();
-    return cnta < cntb;
+        int cnta = a.size();
+        int cntb = b.size();
+        if(cnta != cntb){
+            return cnta < cntb;
+        } else {
+            int comp = a.compare(b);
+            if(comp <= 0){
+                return true;
+            } else {
+                return false;
+            }
+        }
+    
 }
 
 int main(){
@@ -37,13 +47,12 @@ int main(){
     getline(cin, s);
     stringstream ss(s);
     string word;
-    vector<string> vS;
+    vector<string> vX;
     while(ss >> word){
-        vS.push_back(word);
+        vX.push_back(word);
     }
-
-    stable_sort(vS.begin(), vS.end(), cmp);
-    for(string item: vS){
+    sort(vX.begin(), vX.end(), cmp);
+    for(string item: vX){
         cout << item << " ";
     }
     return 0;
