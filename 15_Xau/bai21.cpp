@@ -31,10 +31,12 @@
 
 using namespace std;
 const long long mod = 1e9+7;
+
 string my_to_string(long long n){
     string a = to_string(n);
     return a;
 }
+
 
 int main(){
     long long n; cin >> n;
