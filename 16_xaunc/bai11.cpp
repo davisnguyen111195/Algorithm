@@ -49,13 +49,13 @@ int main(){
         vS.push_back(word);
         mS[word]++;
     }
-    sort(vS.begin(), )
-    for(auto item: mS){
-        cout << item.first << " "; 
+    sort(vS.begin(), vS.end(), cmp1);
+    for(string item: vS){
+        cout << item << " "; 
     }
     cout << endl;
 
-    sort(vS.begin(), vS.end(), cmp);
+    sort(vS.begin(), vS.end(), cmp2);
     for(string item: vS){
         cout << item << " ";
     }
