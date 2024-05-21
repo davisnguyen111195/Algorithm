@@ -23,7 +23,6 @@
 // Output 02
 // Copy
 // cccccc
-
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -37,8 +36,6 @@ bool cmp(pair<char, int> a, pair<char, int> b){
 }
 
 int main(){
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
     string s;
     getline(cin, s);
     int a[s.size()] = {0};
@@ -49,6 +46,7 @@ int main(){
         }
     }
     vector<pair<char, int>> vS;
+    set<char> sS;
     for(int i = 0; i < s.size(); i++){
         if(a[i] > 0){
             pair<char, int> pC;
@@ -56,9 +54,11 @@ int main(){
             pC.second = a[i] + 1;
             vS.push_back(pC);
         }
+        sS.insert(s[i]);
     }
     if(vS.size() == 0){
-        cout << s;
+        auto it = --sS.end();
+        cout << *it;
     } else {
         sort(vS.begin(), vS.end(), cmp);
         auto result = vS.back();
