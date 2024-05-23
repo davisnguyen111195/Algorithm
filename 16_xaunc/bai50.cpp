@@ -28,3 +28,37 @@
 // Copy
 // 33222
 
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main(){
+    string s;
+    cin >> s;
+    string result;
+    for(char x: s){
+        switch(x){
+            case '4':
+                result += "322";
+                break;
+            case '6':
+                result += "53";
+                break;
+            case '8':
+                result += "7222";
+                break;
+            case '9':
+                result += "7332";
+                break;
+            default:
+                if(x != '1' && x != '0'){
+                    result += x;
+                }
+                break;
+                
+        }
+    }
+    sort(result.begin(), result.end(), greater<char>());
+    cout << result;
+    return 0;
+}
