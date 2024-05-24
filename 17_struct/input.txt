@@ -1,25 +1,33 @@
-6
-Do Hoai Nam
-14/6/2004
-Bac Ninh
-3.80
-Vu Hoai Tuan
-28/7/2004
-Nam Dinh
-3.90
-Pham Hoai Nhung
-24/3/2004
-Bac Ninh
-3.80
-Tran Hoai Phuong
-17/1/2004
-Nghe An
-2.20
-Do Phuong Vinh
+8
+Tran Hoai Vinh
 12/11/2004
-Nam Dinh
-1.30
-Do Manh Nam
-20/12/2004
+Nghe An
+2 8 5
+Tran Lam Nhung
+1/7/2004
 Ninh Binh
-2.90
+6 1 1
+Tran Lam Tuan
+18/7/2004
+Ninh Binh
+2 3 4
+Do Manh Tuan
+8/1/2004
+Nam Dinh
+7 5 8
+Tran Lam Nam
+15/3/2004
+Nghe An
+2 4 8
+Vu Mai Phuong
+2/11/2004
+Nghe An
+9 10 7
+Vu Lam Vinh
+27/8/2004
+Nghe An
+2 1 7
+Nguyen Tien Dat
+2/11/2004
+Thanh Hoa
+9 10 7
