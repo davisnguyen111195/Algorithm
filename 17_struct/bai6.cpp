@@ -65,6 +65,8 @@ struct SinhVien{
 
 
 int main(){
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
     int n; cin >> n;
     SinhVien a[n];
     for(int i = 0; i < n; i++){
@@ -73,11 +75,13 @@ int main(){
         getline(cin, a[i].ngaySinh);
         getline(cin, a[i].que);
         cin >> a[i].gpa;
+        
     }
 
-    for(int i = 0; i < n; i++){
-        if(a[i].gpa >= 2.5 && a[i].que == "Nam Dinh"){
-            a[i].showInfor();
+    for(auto item: a){
+        if(item.que == "Nam Dinh" && item.gpa >= 2.5){
+            item.showInfor();
+            cout << endl;
         }
     }
     return 0;
