@@ -12,14 +12,33 @@ node* makeNode(int x){
     newNode->next = NULL;
     return newNode;
 }
-int main(){
+
+void duyetNode(node *head){
+    while(head != NULL){
+        cout << head->data << " ";
+        head = head->next;
+    }
+}
+
+void themDauNode(node *&head, int x){
+    node *newNode = makeNode(x);
+    //cho node moi tro vao node dau tien trong dslk
+    newNode->next = head;
+    //cap nhat node head thanh newNode
+    head = newNode;
+}
+void themCuoiNode(node *&head, int x){
     
-    node* head = makeNode(100);
-    head->data = 100;
-    head->next = NULL;
-    node* thu2 = new node;
-    thu2->data = 200;
-    thu2->next = NULL;
-    head->next = thu2;
+}
+
+int main(){
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    node *head = NULL;
+    for(int i = 1; i <= 5; i++){
+        themDauNode(head, i);
+    }
+
+    duyetNode(head);
     return 0;
 }
