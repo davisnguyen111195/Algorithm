@@ -28,7 +28,17 @@ void themDauNode(node *&head, int x){
     head = newNode;
 }
 void themCuoiNode(node *&head, int x){
-    
+
+    node *head2 = head;
+    node *newNode = makeNode(x);
+    if(head == NULL){
+        head = newNode;
+        return;
+    }
+    while(head2->next != NULL){
+        head2 = head2->next;
+    }
+    head2->next = newNode;
 }
 
 int main(){
