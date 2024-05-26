@@ -1,0 +1,29 @@
+7
+1
+CNTT1
+Le Van Long
+2.40
+1
+CNTT2
+Le Van Long
+1.20
+1
+CNTT3
+Vuong Hoang Manh
+1.20
+1
+CNTT4
+Le Hoang Nam
+2.80
+2
+CNTT5
+Vuong Van Phuoc
+2.60
+1
+CNTT6
+Pham Xuan Manh
+3.10
+3 2
+CNTT7
+Le Xuan Phuoc
+2.40

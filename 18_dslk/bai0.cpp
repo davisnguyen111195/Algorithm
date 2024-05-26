@@ -52,3 +52,27 @@ int main(){
     duyetNode(head);
     return 0;
 }
+
+
+// void setToNull(int *&ptr)	
+// {
+// 	ptr = NULL;
+// }
+
+// int main()
+// {
+// 	int value = 5;
+// 	int *pValue = &value;
+	
+// 	cout << "pValue point to " << pValue << endl;
+// 	//setToNull(pValue);
+// 	if(pValue == NULL){
+// 		cout << "pValue point to NULL" << endl;
+//         //cout << value;
+//         //cout << *pValue;
+// 	} else {
+// 		cout << "pValue point to " << pValue << endl;
+//         cout << *pValue;
+//     }
+// 	return 0;
+// }
