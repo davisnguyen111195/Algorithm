@@ -1,8 +1,5 @@
-CNTT6 Pham Xuan Manh 3.10
-CNTT7 Le Xuan Phuoc 2.40
-CNTT4 Le Hoang Nam 2.80
-CNTT3 Vuong Hoang Manh 1.20
-CNTT2 Le Van Long 1.20
-CNTT1 Le Van Long 2.40
-  0.00
-CNTT5 Vuong Van Phuoc 2.60
+java 1
+python 3
+backend 1
+programming 1
+28tech 1
