@@ -69,26 +69,17 @@ int size(node * head){
     return cnt;
 }
 
-void deleteAll(node * &head, int x){
-    node * tmp = head;
-    if(head == NULL) return;
-    if(tmp->next == NULL){
-        node * xoa = head;
-        head = NULL;
-        delete xoa; 
-        return;
+node * deleteAll(node * head, int x){
+    if(head == NULL){
+        return NULL;
     }
-
-    while(tmp->next != NULL){
-        if(tmp->next->data == x){
-            node * k1 = tmp;
-            node * xoa = tmp->next;
-            k1->next = xoa->next;
-            delete xoa;
-        } else {
-            tmp = tmp->next;
-        }
+    
+    head->next = deleteAll(head->next, x);
+    
+    if(head->data == x){
+        return head->next;
     }
+    return head;
 }
 
 void insertBegin(node * &head, int x){
@@ -123,7 +114,7 @@ int main(){
         insertAss(head, a[i]);
     }
 
-    deleteAll(head, x);
+    head = deleteAll(head, x);
 
     if(size(head) == 0){
         cout << "EMPTY";
