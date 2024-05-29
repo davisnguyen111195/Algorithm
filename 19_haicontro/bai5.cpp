@@ -30,7 +30,9 @@
 using namespace std;
 
 int main(){
-    int n, s;
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    int n, s; cin >> n >> s;
     int a[n];
     for(int &x: a){
         cin >> x;
@@ -42,17 +44,20 @@ int main(){
     for(int r = 0; r < n; r++){
         sum += a[r];
         if(sum >= s){
+            while(true){
+                if(sum - a[l] < s){
+                    break;
+                }else {
+                    
+                    sum -= a[l];
+                    l++;
+                }
+            }
             cnt = min(cnt, r-l+1);
-        } else {
             
         }
-
     }
+
+    cout << cnt;
     return 0;
-
-
-
-
-
-
 }
