@@ -36,22 +36,15 @@ int main(){
     for(int &x: a) cin >> x;
     long long sum = 0;
     long long cnt = 0;
-    
+    int l = 0;
     for(int r = 0; r < n; r++){
         sum += a[r];
-        if(sum >= s){
-            cnt++; 
-            int l = 0;
-            while(true){
-                if(sum - a[l] < s){
-                    break;
-                } else {
-                    sum -= a[l];
-                    cnt++;
-                    l++;
-                }
-            }   
+        while(sum >= s){
+            cnt += n-r;
+            sum -= a[l];
+            l++;
         }
+
     }
     cout << cnt;
     return 0;
