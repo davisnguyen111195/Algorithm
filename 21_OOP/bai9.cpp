@@ -31,60 +31,57 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-class GV{
-private:
-    int heso;
-    string chucvu;
-    string ten;
-    string lcb;
-    SoLon luong;
-public:
-    GV(int heso, string chucvu, string ten, string lcb){
-        this->heso = heso;
-        this->chucvu = chucvu;
-        this->ten = ten;
-        this->lcb = lcb;
-    }
-};
 
 class SoLon{
 private: 
     string so;
 public:
+    SoLon(){
+        
+    }
     SoLon(string so){
         this->so = so;
     }
-    inline string csl(string b){
-        string a = this->so;
-        int du = 0;
-        int mid = 0;
-        string res = "";
-        a.insert(0, max(0, (int)(b.length() - a.length())), '0');
-        b.insert(0, max(0, (int)(a.length() - b.length())), '0');
-        for(int i = a.length()-1; i >= 0; i--){
-            mid = (int)(a[i]-48) + (int)(b[i]-48) + du;
-            du = mid / 10;
-            res += (char)(mid%10 + 48);
+    string getSo(){
+        return this->so;
+    }
+
+    void setSo(string so){
+        this->so = so;
+    }
+
+    string csl(string a, string b)
+    {
+        int     du  = 0;
+        int     mid = 0;
+        string  res = "";
+        a.insert(0, max(0, (int) (b.length() - a.length())), '0');
+        b.insert(0, max(0, (int) (a.length() - b.length())), '0');
+        for (int i = a.length()-1; i >= 0; --i)
+        {
+            mid = ((int) a[i] - 48) + ((int) b[i] - 48) + du;
+            du  = mid / 10;
+            res = (char) (mid % 10 + 48) + res;
         }
-        if(du > 0){
-            res = "1" + res;
-        }
+        if (du > 0) res = "1" + res;
         return res;
     }
 
-    inline string nsb(int b, int l){
-        string a = this->so;
-        string res = "";
-        int mid = 0;
-        int du = 0;
-        for(int i = a.length()-1; i >= 0; i--){
-            mid = ((int) a[i] - 48) * b + du;
-            du = mid / 10;
+    string nsb(string a, int b, int l)
+    {
+        string  res = "";
+        int     mid = 0;
+        int     du  = 0;
+        for (int i = a.length() - 1; i >= 0; --i)
+        {
+            mid     = ((int) a[i] - 48) * b + du;
+            du  = mid / 10;
             res = (char) (mid % 10 + 48) + res;
         }
-
-        if(du > 0){
-            res = to_string(du) + res;
+        if (du > 0)
+        {
+            string  k = to_string(du);
+            res = k + res;
         }
         res.insert(res.length(), l, '0');
         return res;
@@ -92,24 +89,85 @@ public:
 
     string nsl(string b){
         string a = this->so;
-        string res = "";
-        for(int i = b.length()-1; i >= 0; i--){
-            string t = SoLon::nsb(a, b[i]-48, b.length()-i-1);
-            res = SoLon::csl(res, t);
+        string  res = "";
+        for (int i = b.length() - 1; i >= 0; --i)
+        {
+            string  t = nsb(a, (int) b[i] - 48, b.length() - i - 1);
+            res     = csl(res, t);
         }
         return res;
     }
 };
 
+class GV{
+private:
+    int heso;
+    string maheso;
+    string chucvu;
+    string ten;
+    string lcb;
+    string luong;
+public:
+    GV(int heso, string maheso, string chucvu, string ten, string lcb){
+        this->maheso = maheso;
+        this->heso = heso;
+        this->chucvu = chucvu;
+        this->ten = ten;
+        this->lcb = lcb;
+    }
+
+    void setLuong(string luong){
+        this->luong = luong;
+    }
+
+    int getHeSo(){
+        return this->heso;
+    }
+
+    string getlcb(){
+        return this->lcb;
+    }
+
+    string getChucVu(){
+        return this->chucvu;
+    }
+
+    void showInfor(){
+        cout << maheso << " ";
+        cout << ten << " " << heso << " " << luong; 
+    }
+};
+
+
 int main(){
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
     vector<string> vS;
     int k = 3;
     while(k--){
         string s; getline(cin, s);
         vS.push_back(s);
     }
-    string chucvu = vS[0][0] + vS[0][1];
+    string chucvu;
+    for(int i = 0; i <= 1; i++){
+        chucvu.push_back(vS[0][i]);
+    }
+
+
     int heso = (vS[0][2] - '0')*10 + (vS[0][3]-'0');
-    GV gv(heso, chucvu, vS[1], vS[2]);
+    GV gv(heso, vS[0], chucvu, vS[1], vS[2]);
+    SoLon solon(gv.getlcb());
+    string luong = solon.nsl(to_string(gv.getHeSo()));
+    solon.setSo(luong);
+    if(gv.getChucVu() == "HP"){
+        luong = solon.csl(solon.getSo(), "900000");
+    } else if(gv.getChucVu() == "HT"){
+        luong = solon.csl(solon.getSo(), "2000000");
+    } else {
+        luong = solon.csl(solon.getSo(), "500000");
+    }
+    
+    gv.setLuong(luong);
+    gv.showInfor();
     return 0;
 }
