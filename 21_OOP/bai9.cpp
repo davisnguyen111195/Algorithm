@@ -33,14 +33,17 @@
 using namespace std;
 class GV{
 private:
-    string ma;
+    int heso;
+    string chucvu;
     string ten;
-    string hsl;
+    string lcb;
+    SoLon luong;
 public:
-    GV(string ma, string ten, string hsl){
-        this->ma = ma;
+    GV(int heso, string chucvu, string ten, string lcb){
+        this->heso = heso;
+        this->chucvu = chucvu;
         this->ten = ten;
-        this->hsl = hsl;
+        this->lcb = lcb;
     }
 };
 
@@ -51,7 +54,7 @@ public:
     SoLon(string so){
         this->so = so;
     }
-    string csl(string b){
+    inline string csl(string b){
         string a = this->so;
         int du = 0;
         int mid = 0;
@@ -69,7 +72,7 @@ public:
         return res;
     }
 
-    string nsb(int b, int l){
+    inline string nsb(int b, int l){
         string a = this->so;
         string res = "";
         int mid = 0;
@@ -91,15 +94,22 @@ public:
         string a = this->so;
         string res = "";
         for(int i = b.length()-1; i >= 0; i--){
-            string t = nsb(a, b[i]-48, b.length()-i-1);
-            res = csl(res, t);
+            string t = SoLon::nsb(a, b[i]-48, b.length()-i-1);
+            res = SoLon::csl(res, t);
         }
         return res;
     }
 };
 
 int main(){
-    
-
+    vector<string> vS;
+    int k = 3;
+    while(k--){
+        string s; getline(cin, s);
+        vS.push_back(s);
+    }
+    string chucvu = vS[0][0] + vS[0][1];
+    int heso = (vS[0][2] - '0')*10 + (vS[0][3]-'0');
+    GV gv(heso, chucvu, vS[1], vS[2]);
     return 0;
 }
